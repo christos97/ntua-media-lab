@@ -57,6 +57,23 @@ public class AirportParkingQuery {
             statement.executeUpdate();
         } catch (SQLException ex) { ex.printStackTrace(); }
     }
+
+    public static void clearAirportData () {
+        Connection connection = DataConnection.getConnection();
+        try {
+            String sql = "DELETE FROM AirportParking";
+            statement = connection.prepareStatement(sql);
+            statement.executeUpdate();
+        } catch (SQLException ex) { ex.printStackTrace(); }
+    }
+    public static void uploadAirportData (){
+        Connection connection = DataConnection.getConnection();
+        try {
+            String sql2 = "LOAD DATA INFILE 'airport_default.txt' INTO TABLE AirportParking FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n'";
+            statement = connection.prepareStatement(sql2);
+            statement.executeUpdate();
+        } catch (SQLException ex) { ex.printStackTrace(); }
+    }
     public static ObservableList<AirportParking> getParkingSlotsPerCategory () {
         Connection connection = DataConnection.getConnection();
         try {

@@ -2,6 +2,7 @@ package Model.Entities;
 
 public class Data {
     String categ;
+    int categId;
     String city;
     int type;
     int price;
@@ -9,11 +10,12 @@ public class Data {
     String[] services ;
     Double[] pricing ;
     double total_fee;
+    int total_slots;
 
     public Data (){
         total_fee =0.0;
     }
-    public Data(String category,String _city, int flightType,int _price ,String suffix, String[] serv, Double[] pric){
+    public Data(String category,String _city, int flightType,int _price ,String suffix, String[] serv, Double[] pric,int _categId){
         city=_city;
         categ = category;
         type = flightType;
@@ -21,7 +23,25 @@ public class Data {
         services = serv;
         pricing = pric;
         price = _price;
-       total_fee=0.0;
+        total_fee=0.0;
+        total_slots=0;
+        categId = _categId;
+    }
+
+    public int getCategId() {
+        return categId;
+    }
+
+    public void setCategId(int categId) {
+        this.categId = categId;
+    }
+
+    public int getTotal_slots() {
+        return total_slots;
+    }
+
+    public void setTotal_slots(int total_slots) {
+        this.total_slots = total_slots;
     }
 
     public double getTotal_fee() {
@@ -89,6 +109,6 @@ public class Data {
     }
     @Override
     public String toString() {
-        return getCateg()+","+getCity()+","+getType()+","+getSuf()+","+getPricing()+","+getServices()+","+getPrice()+","+getTotal_fee()+"\n";
+        return getCateg()+","+getCity()+","+getType()+","+getSuf()+","+getPricing()+","+getServices()+","+getPrice()+","+getTotal_fee()+","+getTotal_slots()+","+getCategId()+"\n";
     }
 }
