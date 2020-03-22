@@ -36,14 +36,11 @@ public class ParkingPopup {
 
         CheckBox[] box = new CheckBox[services.length];
         Double[] selected = new Double[services.length];
-        Label label = new Label("City : " + city + "\n");
-
-        Label label1= new Label("Parking slot available: " + suffix);
-        label1.setTranslateY(-50);
-        Label label2 = new Label("Parking Category: " + category + "\n\nCost: " + price + "$");
-        label2.setTranslateY(-62);
-        Label label3 = new Label("Choose Services available: ");
-        label3.setTranslateY(-50);
+        Label label = new Label(
+                "City : " + city +
+                "\n\nParking slot available: " + suffix +
+                "\n\nParking Category: " + category + "\n\nCost: " + price + "$" + "\n\nChoose Services available: \n\n"
+        );
 
         Double[] extras = new Double[services.length];
         for (int i =0; i < services.length; i++){
@@ -52,6 +49,7 @@ public class ParkingPopup {
             var text = services[i] + ": " +extras[i].toString()+"$";
             box[i].setText(text);
             r.getChildren().addAll(box[i]);
+            r.setHgap(10);
         }
 
         Button button1= new Button("OK");
@@ -59,7 +57,6 @@ public class ParkingPopup {
         button1.setTranslateY(36);
         button1.setTranslateX(100);
         Button button2 = new Button ("Cancel");
-        //button2.setCancelButton(true);
         button2.setTranslateY(0);
         button2.setTranslateX(-100);
 
@@ -109,7 +106,7 @@ public class ParkingPopup {
 
         VBox layout= new VBox(10);
 
-        layout.getChildren().addAll(label1,label,label2,label3,r,button1,button2);
+        layout.getChildren().addAll(label,r,button1,button2);
 
         layout.setAlignment(Pos.CENTER);
 

@@ -23,13 +23,12 @@ public class ServicesQuery {
         services = FXCollections.observableArrayList();
 
         try {
-            if (id == 6 ) { sql = "SELECT title,pricing FROM Services WHERE id=1 && id=2"; }
+            if (id == 6 ) { sql = "SELECT title,pricing FROM Services WHERE id=1 OR id=2"; }
             else {
                 if(type == 1) sql = "SELECT title,pricing FROM Services WHERE id!=4";
                 else sql = "SELECT title,pricing FROM Services";
             }
             statement = connection.prepareStatement(sql);
-            //statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
 
             while(rs.next())
